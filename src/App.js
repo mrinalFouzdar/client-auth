@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { useEffect } from "react";
+import {useDispatch, useSelector} from "react-redux"
+import { getallPost } from './Redux/PostSlice/post-Slice';
+import From from './Components/From/From';
+import ShowData from './Page/ShowData/ShowData';
+import { Route, Routes } from "react-router-dom";
+
+
 
 function App() {
+  const dispatch = useDispatch()
+  const {get,post} = useSelector(state => state.app)
+  useEffect(()=>{
+    dispatch(getallPost())
+  },[post])
+  // console.log(get);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      Mohaprabhu
+      
+      <Routes>
+        <Route path='/' element={<ShowData/>}/>
+        <Route path="/from" element={<From />} />
+        <Route path="/editbyId/:id" element={<From />} />
+        
+      </Routes>
     </div>
   );
 }
