@@ -17,9 +17,7 @@ function App() {
   },[post])
   // console.log(get);
   return (
-    <div className="App">
-      Mohaprabhu
-      
+    <div className="App">      
       <Routes>
         <Route path='/' element={<ShowData/>}/>
         <Route path="/from" element={<From />} />
